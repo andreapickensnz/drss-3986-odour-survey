@@ -1,12 +1,12 @@
 # drss-3986-odour-survey
 DRSS-3986 Odour Survey Datascape and Fieldwork prototypes
 
-## Latest RSHL Title: V4 (prototype artifact v8)
+## Latest RSHL Preview: V4
 
-- [Datascape](https://andreapickensnz.github.io/drss-3986-odour-survey/DRSS-3986%20Odour%20Survey%20-%20Datascape%20-%20v8.html)
-- [Fieldwork](https://andreapickensnz.github.io/drss-3986-odour-survey/DRSS-3986%20Odour%20Survey%20-%20Fieldwork%20-%20v8.html)
+- [Datascape v4](https://andreapickensnz.github.io/drss-3986-odour-survey/DRSS-3986%20Odour%20Survey%20-%20Datascape%20-%20RSHL%20v4.html)
+- [Fieldwork v4](https://andreapickensnz.github.io/drss-3986-odour-survey/DRSS-3986%20Odour%20Survey%20-%20Fieldwork%20-%20RSHL%20v4.html)
 
-The displayed prototype title is v4 for RSHL. These v8 artifacts retain the latest changes, including all six shared NZR Weather dropdowns and their configured choices. Weather values remain blank until selected.
+These RSHL v4 preview files use the latest prototype content, including all six shared NZR Weather dropdowns and their configured choices. Weather values remain blank until selected. The older v4 artifacts remain linked below.
 
 ## Previous
 
