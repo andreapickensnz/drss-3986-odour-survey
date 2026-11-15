@@ -293,6 +293,11 @@ input:disabled, select:disabled, textarea:disabled { background: var(--ds-readon
 .control:focus-within { background: var(--ds-focus-bg); border-color: var(--ds-focus-border); }
 .control input::-webkit-calendar-picker-indicator { display: none; }
 .control .affix { color: var(--indigo); padding: 0 8px; font-size: 13px; }
+.control.time-control { position: relative; }
+.time-control .time-empty-cover { display: none; position: absolute; z-index: 1; inset: 1px 30px 1px 1px; background: #fff; pointer-events: none; }
+.time-control.is-empty .time-empty-cover { display: block; }
+.time-control.is-empty:focus-within .time-empty-cover { background: var(--ds-focus-bg); }
+.time-control .affix { position: relative; z-index: 2; }
 
 /* choice controls */
 
@@ -2274,6 +2279,16 @@ window.ODOUR_SURVEY = {
 		if (field.type === "date" || field.type === "time") {
 			const wrap = el("div", "control");
 			wrap.appendChild(input);
+			if (field.type === "time") {
+				wrap.classList.add("time-control");
+				const cover = el("span", "time-empty-cover");
+				cover.setAttribute("aria-hidden", "true");
+				wrap.appendChild(cover);
+				const syncTimeEmptyState = () => wrap.classList.toggle("is-empty", !input.value);
+				syncTimeEmptyState();
+				input.addEventListener("input", syncTimeEmptyState);
+				input.addEventListener("change", syncTimeEmptyState);
+			}
 			wrap.appendChild(el("span", "affix", field.type === "date" ? "▦" : "◔"));
 			return wrap;
 		}
