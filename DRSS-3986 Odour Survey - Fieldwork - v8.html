@@ -682,7 +682,7 @@ body.spec-off .spec-note,
 body.spec-off .cond-state,
 body.spec-off .raw,
 body.spec-off .legend,
-body.spec-off .chip,
+body.spec-off .chip:not(.field-status-chip),
 body.spec-off .rep-index,
 body.spec-off .reader-notes,
 body.spec-off .is-inactive { display: none; }
@@ -1450,7 +1450,7 @@ window.ODOUR_SURVEY = {
 					label: "Reason for investigation",
 					type: "select",
 					options: ["Complaint", "Proactive"],
-					origin: "new",
+					origin: "standard",
 					detail: "Two options, no default given."
 				}
 			]
@@ -1477,14 +1477,14 @@ window.ODOUR_SURVEY = {
 					id: "windMax",
 					label: "Wind velocity MAX (m/s)",
 					type: "number",
-					origin: "wording",
+					origin: "new",
 					detail: "Two decimal places."
 				},
 				{
 					id: "windAv",
 					label: "Wind velocity AV (m/s)",
 					type: "number",
-					origin: "wording",
+					origin: "new",
 					detail: "Two decimal places, same as the MAX above."
 				},
 				{
@@ -1513,7 +1513,7 @@ window.ODOUR_SURVEY = {
 							id: "minuteTime",
 							label: "Minute",
 							type: "time",
-							origin: "new",
+							origin: "standard",
 							detail: "Entered manually by the officer. It isn't worked out from the Start time."
 						},
 						{
@@ -1521,7 +1521,7 @@ window.ODOUR_SURVEY = {
 							label: "Intensity",
 							type: "select",
 							options: ["6 Extremely strong", "5 Very strong", "4 Strong", "3 Moderate", "2 Weak", "1 Very weak", "0 No odour"],
-							origin: "new",
+							origin: "standard",
 							detail: "Seven points, strongest first, as listed in the requirements."
 						},
 						{
@@ -1541,7 +1541,7 @@ window.ODOUR_SURVEY = {
 								"34 Paint-like", "35 Rancid", "36 Sulphur smelling", "37 Dead animal",
 								"38 Faecal (like manure)", "39 Sewer odour", "40 Other - please describe"
 							],
-							origin: "new",
+							origin: "standard",
 							detail: "The standard 40-point odour character scale."
 						},
 						{
@@ -1557,7 +1557,7 @@ window.ODOUR_SURVEY = {
 							label: "Initial hedonic tone",
 							type: "select",
 							options: ["-4 Extremely unpleasant", "-3", "-2", "-1", "0 Neutral", "1", "2", "3", "4 Extremely pleasant"],
-							origin: "new",
+							origin: "standard",
 							detail: "A nine-point pleasantness scale running from -4 to +4."
 						}
 					]
@@ -1569,7 +1569,7 @@ window.ODOUR_SURVEY = {
 					origin: "new",
 					detail: "Recorded once for the whole initial impression, not per minute.",
 					fields: [
-						{ id: "plumeWidth", label: "Plume width (if known) (m)", type: "number", origin: "new" },
+						{ id: "plumeWidth", label: "Plume width (if known) (m)", type: "number", origin: "standard" },
 						{ id: "impressionComments", label: "Initial impression comments", type: "textarea", origin: "new" },
 						{
 							id: "odourAssessment",
@@ -1582,7 +1582,7 @@ window.ODOUR_SURVEY = {
 								"Odour detected Objectionable if frequent",
 								"Odour detected Objectionable if short duration"
 							],
-							origin: "new"
+							origin: "standard"
 						}
 					]
 				},
@@ -1635,8 +1635,8 @@ window.ODOUR_SURVEY = {
 							decision: "14 October 2026. RSHL confirmed the pin carries a name and notes, typed in the field. The wind direction, how strong the odour was, and the odour assessment stay on the survey."
 						},
 						{ id: "site360WindDirection", label: "Wind Direction (Degrees)", type: "number", origin: "new" },
-						{ id: "site360WindMax", label: "Wind velocity MAX (m/s)", type: "number", origin: "wording", detail: "Two decimal places." },
-						{ id: "site360WindAv", label: "Wind velocity AV (m/s)", type: "number", origin: "wording", detail: "Two decimal places." },
+						{ id: "site360WindMax", label: "Wind velocity MAX (m/s)", type: "number", origin: "new", detail: "Two decimal places." },
+						{ id: "site360WindAv", label: "Wind velocity AV (m/s)", type: "number", origin: "new", detail: "Two decimal places." },
 						{
 							id: "site360Start",
 							label: "Start time",
@@ -1674,7 +1674,7 @@ window.ODOUR_SURVEY = {
 								id: "site360OtherCharacter",
 								label: "Other character description",
 								type: "text",
-								origin: "wording",
+								origin: "new",
 								conditionText: "Show if Character = 40 Other - please describe",
 								showWhen: { field: "site360Character", equals: "40 Other - please describe" },
 							},
@@ -1683,7 +1683,7 @@ window.ODOUR_SURVEY = {
 								label: "Hedonic tone",
 								type: "select",
 								options: ["-4 Extremely unpleasant", "-3", "-2", "-1", "0 Neutral", "1", "2", "3", "4 Extremely pleasant"],
-								origin: "wording",
+								origin: "new",
 							},
 							{
 								id: "site360Assessment",
@@ -1849,8 +1849,8 @@ window.ODOUR_SURVEY = {
 				{
 					headless: true,
 					fields: [
-						{ id: "onsiteTime", label: "Time", type: "time", origin: "new" },
-						{ id: "sourceIdentified", label: "Source identified", type: "text", origin: "new" }
+										{ id: "onsiteTime", label: "Time", type: "time", origin: "standard" },
+										{ id: "sourceIdentified", label: "Source identified", type: "text", origin: "standard" }
 					]
 				},
 				{
@@ -1866,7 +1866,7 @@ window.ODOUR_SURVEY = {
 								lead: "Platform limitation:",
 								text: "On the Fieldwork app this block is drawn at the very bottom of the form. On the Datascape desktop it stays where it is."
 							},
-							origin: "new",
+							origin: "standard",
 							decision: "RSHL confirmed on 7 Oct 2026 that each person has their own relationship type, so this stays a repeater.",
 							detail: "One row per person spoken to on site. Each person has their own relationship type. Added to the job's contact list.",
 							mapsTo: "Add to job contacts",
@@ -1897,14 +1897,14 @@ window.ODOUR_SURVEY = {
 		},
 		{
 			name: "On-site findings",
-			origin: "new",
+							origin: "standard",
 			conditionText: "Show section if On-site investigation required = Yes",
 			showWhen: { field: "onsiteRequired", equals: "Yes" },
 			fields: [
-				{ id: "currentOperation", label: "Current site operation", type: "text", origin: "new" },
-				{ id: "explanationGiven", label: "Explanation given for odour", type: "textarea", origin: "new" },
-				{ id: "observations", label: "Observations", type: "textarea", origin: "new" },
-				{ id: "onsiteComments", label: "Onsite investigation comments", type: "textarea", origin: "new" }
+							{ id: "currentOperation", label: "Current site operation", type: "text", origin: "standard" },
+							{ id: "explanationGiven", label: "Explanation given for odour", type: "textarea", origin: "standard" },
+							{ id: "observations", label: "Observations", type: "textarea", origin: "standard" },
+							{ id: "onsiteComments", label: "Onsite investigation comments", type: "textarea", origin: "wording" }
 			]
 		},
 		{
@@ -1916,22 +1916,22 @@ window.ODOUR_SURVEY = {
 					label: "Are there potential witness statements to obtain",
 					type: "select",
 					options: ["Yes", "No"],
-					origin: "new"
+									origin: "standard"
 				},
 				{
 					id: "complainantsUpdated",
 					label: "Have the complainants been updated",
 					type: "select",
 					options: ["Yes", "No"],
-					origin: "new"
+									origin: "standard"
 				},
-				{ id: "suspectedSource", label: "Name of suspected source (Business or individual)", type: "text", origin: "new" },
-				{ id: "otherSource", label: "Name of other potential source", type: "text", origin: "new" }
+							{ id: "suspectedSource", label: "Name of suspected source (Business or individual)", type: "text", origin: "wording" },
+							{ id: "otherSource", label: "Name of other potential source", type: "text", origin: "standard" }
 			]
 		},
 		{
 			name: "Notice of Inspection",
-			origin: "standard",
+							origin: "new",
 			fields: [
 				{
 					id: "noticeLeft",
@@ -1940,7 +1940,7 @@ window.ODOUR_SURVEY = {
 					options: ["Yes", "No"],
 					value: "Yes",
 					mandatory: true,
-					origin: "standard",
+							origin: "new",
 					detail: "Defaults to Yes."
 				},
 				{
@@ -1949,7 +1949,7 @@ window.ODOUR_SURVEY = {
 					type: "media",
 					media: "photo",
 					mandatory: true,
-					origin: "standard",
+					origin: "new",
 					conditionText: "IF Notice of Inspection Left? = Yes",
 					showWhen: { field: "noticeLeft", equals: "Yes" }
 				}
@@ -1967,11 +1967,11 @@ window.ODOUR_SURVEY = {
 */
 (function (global) {
 	const ORIGIN = {
-		standard: { label: "Standard", hint: "Same as all other surveys" },
+		standard: { label: "Existing", hint: "Existing field; no change" },
 		pestPlant: { label: "Same as Pest Plant", hint: "Matches the Pest Plant Inspection survey" },
-		new: { label: "New", hint: "Not on the form today" },
-		wording: { label: "Wording edit", hint: "The requirements change the label, type or option wording" },
-		moved: { label: "Moved", hint: "The field stays, its position changes" },
+		new: { label: "New", hint: "New field in this prototype" },
+		wording: { label: "Updated wording", hint: "Existing field with updated wording" },
+		moved: { label: "Updated wording", hint: "Existing field with updated wording or placement" },
 		toLocation: { label: "Now on location", hint: "Moves off the survey onto the GIS location record" },
 		existing: { label: "Existing", hint: "Already configured in the environment" },
 		removed: { label: "Removal requested", hint: "RSHL ask for this to go, but the removal is not settled" }
@@ -2248,6 +2248,15 @@ window.ODOUR_SURVEY = {
 		return null;
 	}
 
+	function fieldStatusChip(field) {
+		const status = ORIGIN[field.origin];
+		if (!status) return null;
+		const className = field.origin === "new" ? "chip-new" : field.origin === "standard" ? "chip-standard" : "chip-wording";
+		const chip = el("span", `chip field-status-chip ${className}`, status.label);
+		chip.title = status.hint;
+		return chip;
+	}
+
 	function labelRow(field) {
 		const row = el("div", "label");
 		row.appendChild(el("span", "label-text", field.label));
@@ -2262,7 +2271,7 @@ window.ODOUR_SURVEY = {
 		};
 		asList(field.eng).forEach(addEng);
 		engineeringMarkList(field).forEach((mark) => addEng(mark.n));
-		const chip = originChip(field.origin);
+		const chip = fieldStatusChip(field);
 		if (chip) row.appendChild(chip);
 		return row;
 	}
@@ -2332,6 +2341,8 @@ window.ODOUR_SURVEY = {
 		row.appendChild(btn);
 		row.appendChild(val);
 		row.appendChild(caption);
+		const chip = fieldStatusChip(field);
+		if (chip) row.appendChild(chip);
 		return row;
 	}
 
@@ -2591,7 +2602,7 @@ window.ODOUR_SURVEY = {
 		btn.type = "button";
 		row.appendChild(btn);
 		if (field.mandatory) row.appendChild(el("span", "req", "*"));
-		const chip = originChip(field.origin);
+		const chip = fieldStatusChip(field);
 		if (chip) row.appendChild(chip);
 		return row;
 	}
@@ -2672,7 +2683,7 @@ window.ODOUR_SURVEY = {
 			const ask = engineeringBox(field);
 			if (ask) wrap.appendChild(ask);
 			wrap.appendChild(el("h5", "row-heading", field.label));
-			const chip = originChip(field.origin);
+			const chip = fieldStatusChip(field);
 			if (chip) wrap.querySelector(".row-heading").appendChild(chip);
 			wrap.appendChild(renderSpec(field));
 			wrap.classList.add("is-wide");
