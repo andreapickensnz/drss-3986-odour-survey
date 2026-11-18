@@ -1500,11 +1500,12 @@ window.ODOUR_SURVEY = {
 					id: "impressionMinutes",
 					name: "Minute",
 					fixed: 10,
+					appendOnPhone: true,
 					origin: "new",
-					decision: "RSHL confirmed on 11 Nov 2026 that minute times are entered manually. Ten fixed blocks are shown as requested; their platform feasibility still needs confirmation.",
+					decision: "RSHL confirmed on 11 Nov 2026 that minute times are entered manually. Ten fixed rows are shown as requested; their platform feasibility still needs confirmation.",
 					platform: {
-						lead: "Platform note:",
-						text: "Fixed blocks are ordinary questions, not a repeater, so they stay in Initial Impression after Start time on both the Fieldwork app and the Datascape desktop."
+						lead: "Platform limitation:",
+						text: "On the Fieldwork app this block is drawn at the very bottom of the form. On the Datascape desktop it stays in this part."
 					},
 					detail: "Ten fixed blocks. The officer enters the time in each block; times are not calculated from Start time.",
 					fields: [
@@ -1595,7 +1596,7 @@ window.ODOUR_SURVEY = {
 							options: ["Yes", "No"],
 							value: "No",
 							origin: "wording",
-							note: "This is the switch for the 360 assessment readings. Leave it at No and they stay greyed out; On-site investigation required can still be answered."
+							note: "This is the switch for the whole 360 Degree Survey part. Leave it at No and that part stays greyed out."
 						}
 					]
 				}
@@ -1604,6 +1605,8 @@ window.ODOUR_SURVEY = {
 		{
 			name: "360 Degree Survey",
 			origin: "new",
+			conditionText: "Show section if 360° assessment required = Yes",
+			showWhen: { field: "assessment360", equals: "Yes" },
 			decision: "Each added block is a different site around the alleged source — upwind, downwind and so on — with one set of readings. The officer adds another with +360 assessment.",
 			repeaters: [
 				{
@@ -1611,8 +1614,6 @@ window.ODOUR_SURVEY = {
 					name: "360 assessment",
 					addText: "+360 assessment",
 					origin: "new",
-					conditionText: "Show if 360° assessment required = Yes",
-					showWhen: { field: "assessment360", equals: "Yes" },
 					platform: {
 						lead: "Platform limitation:",
 						text: "On the Fieldwork app this block is drawn at the very bottom of the form. On the Datascape desktop it stays in this part."
@@ -1718,7 +1719,7 @@ window.ODOUR_SURVEY = {
 							options: ["Yes", "No"],
 							value: "No",
 							origin: "wording",
-							note: "This is the switch for the Source on site investigation and On-site findings parts. It can be answered whether or not a 360 assessment was done."
+							note: "This is the switch for the Source on site investigation and On-site findings parts."
 						}
 					]
 				}
