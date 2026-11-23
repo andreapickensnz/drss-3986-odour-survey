@@ -1789,7 +1789,6 @@ window.ODOUR_SURVEY = {
 									conditionText: "IF Warrant Shown = Yes",
 									showWhen: { field: "warrantShown", equals: "Yes" },
 									origin: "new",
-									detail: "Select a contact or enter a name; both may be provided."
 								},
 								{
 									id: "warrantRelationship",
@@ -1848,7 +1847,6 @@ window.ODOUR_SURVEY = {
 									conditionText: "IF Entry Under Search warrant? = Yes",
 									showWhen: { field: "searchWarrant", equals: "Yes" },
 									origin: "new",
-									detail: "Select a contact or enter a name; both may be provided."
 								},
 								{
 									id: "searchRelationship",
@@ -2742,9 +2740,6 @@ window.ODOUR_SURVEY = {
 			default: node = el("div", null, `[${field.type}]`);
 		}
 		wrap.appendChild(node);
-		if (["warrantName", "warrantRecipientName", "searchName"].includes(field.id) && field.type === "text") {
-			wrap.appendChild(el("p", "field-help", "Select a contact or enter a name. You can also provide both."));
-		}
 		wrap.appendChild(renderSpec(field));
 
 		const wide = ["textarea", "spatial", "media", "multiselect", "derived", "signature"].includes(field.type)
@@ -3240,7 +3235,7 @@ window.ODOUR_SURVEY = {
 		["warrantNameFree", "samplingWarrantContact"],
 		["searchName", "searchContact"]
 	];
-	const message = "Select a contact or enter a name. You can also provide both.";
+	const message = "Select a contact or enter a name.";
 
 	function clearError(field) {
 		field.querySelector(".warrant-validation-error")?.remove();
