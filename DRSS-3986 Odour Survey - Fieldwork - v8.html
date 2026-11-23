@@ -1749,11 +1749,10 @@ window.ODOUR_SURVEY = {
 					sections: [
 						{
 							headless: true,
-							conditionText: "IF Warrant Shown = Yes",
-							showWhen: { field: "warrantShown", equals: "Yes" },
 							fields: [
 								{
 									id: "warrantContact",
+									showWhen: { field: "warrantShown", equals: "Yes" },
 									label: "Warrant Shown to name",
 									type: "lookup",
 									lookupOf: "Contact",
@@ -1763,16 +1762,14 @@ window.ODOUR_SURVEY = {
 								},
 								{
 									id: "warrantName",
-									label: "Warrant Shown to name",
+									label: "Warrant Shown to Name (if contact is not found)",
 									type: "text",
-									mandatory: true,
 									origin: "new",
-									conditionText: "IF contact not found in the look up",
-									showWhen: { field: "warrantContact", empty: true },
-									detail: "Typed in when the contact lookup finds nobody. Hidden once a contact is chosen."
+									detail: "Enter the name if the person cannot be found in the contact list."
 								},
 								{
 									id: "warrantRelationship",
+									showWhen: { field: "warrantShown", equals: "Yes" },
 									label: "Warrant Shown to Relationship",
 									type: "text",
 									origin: "new"
@@ -1810,11 +1807,10 @@ window.ODOUR_SURVEY = {
 						},
 						{
 							headless: true,
-							conditionText: "IF Entry Under Search warrant? = Yes",
-							showWhen: { field: "searchWarrant", equals: "Yes" },
 							fields: [
 								{
 									id: "searchContact",
+									showWhen: { field: "searchWarrant", equals: "Yes" },
 									label: "Search Warrant Shown to Name",
 									type: "lookup",
 									lookupOf: "Contact",
@@ -1823,21 +1819,21 @@ window.ODOUR_SURVEY = {
 								},
 								{
 									id: "searchName",
-									label: "Search Warrant Shown to Name",
+									label: "Search Warrant Shown to Name (if contact is not found)",
 									type: "text",
 									origin: "new",
-									conditionText: "IF contact not found in the look up",
-									showWhen: { field: "searchContact", empty: true },
-									detail: "Typed in when the contact lookup finds nobody. Hidden once a contact is chosen."
+									detail: "Enter the name if the person cannot be found in the contact list."
 								},
 								{
 									id: "searchRelationship",
+									showWhen: { field: "searchWarrant", equals: "Yes" },
 									label: "Search Warrant Shown to Relationship",
 									type: "text",
 									origin: "new"
 								},
 								{
 									id: "searchSignature",
+									showWhen: { field: "searchWarrant", equals: "Yes" },
 									label: "Customer Signature",
 									type: "signature",
 									origin: "new"
